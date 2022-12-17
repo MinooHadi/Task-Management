@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -31,4 +32,110 @@ nav input:last-child{
     background-color: green;
     border: none;
     color: white;
+}
+
+/* boards */
+.main{
+    display: flex;
+    width: fit-content;
+    margin-top: 100px;
+    margin-left: calc((100% - 940px)/2);
+    gap: 15px;
+    padding: 0 5px;
+}
+
+.board{
+    width: 300px;
+    max-height: 500px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    overflow: scroll;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.board h3{
+    padding: 10px 0;
+}
+
+.task-board{
+    background-color: rgb(174, 174, 236);
+}
+
+.doing-board{
+    background-color: rgb(238, 230, 115);
+}
+
+.done-board{
+    background-color: rgb(104, 227, 104);
+}
+
+/* task */
+.task{
+    width: 250px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.content{
+    margin: 15px 0;
+}
+
+.hedear{
+    display: flex;
+    justify-content: space-between;
+}
+
+.hedear h4{
+    color: rgb(223, 92, 92);
+}
+
+.hedear i{
+    color: red;
+}
+
+.date{
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.date div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.date div p, .description p{
+    font-size: 13px;
+    color: grey;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.footer button{
+    width: 40px;
+    height: 40px;
+    background-color: rgb(223, 92, 92);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+}
+
+button:hover{
+    background-color: red;
 }

@@ -1,20 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="assets/style/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="assets/style/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
     <!-- navbar -->
     <nav>
-        <input type="text" placeholder="Todo title">
-        <input type="date">
-        <input type="submit" value="Sub">
+      <input type="text" placeholder="Todo title" />
+      <input type="date" />
+      <input type="submit" value="Sub" />
     </nav>
-    
+
+    <!-- boards -->
+    <div class="main">
+      <div class="board task-board">
+        <h3>Tasks</h3>
+        <!-- task -->
+        <div class="task">
+          <div class="hedear">
+            <h4>Task</h4>
+            <i class="fa fa-close"></i>
+          </div>
+          <div class="content">
+            <div class="date">
+              <div>
+                <h5>Start:</h5>
+                <p>12/20/2022</p>
+              </div>
+              <div>
+                <h5>End:</h5>
+                <p>15/20/2022</p>
+              </div>
+            </div>
+            <div class="description">
+              <h5>Description:</h5>
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+          </div>
+          <div class="footer">
+            <button class="tasks-btn"><i class="fa fa-list-ul"></i></button>
+            <button class="doing-btn"><i class="fa fa-spinner"></i></button>
+            <button class="done-btn">
+              <i class="fa fa-check-square-o"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="task">
+            <div class="hedear">
+              <h4>Task</h4>
+              <i class="fa fa-close"></i>
+            </div>
+            <div class="content">
+              <div class="date">
+                <div>
+                  <h5>Start:</h5>
+                  <p>12/20/2022</p>
+                </div>
+                <div>
+                  <h5>End:</h5>
+                  <p>15/20/2022</p>
+                </div>
+              </div>
+              <div class="description">
+                <h5>Description:</h5>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+              </div>
+            </div>
+            <div class="footer">
+              <button class="tasks-btn"><i class="fa fa-list-ul"></i></button>
+              <button class="doing-btn"><i class="fa fa-spinner"></i></button>
+              <button class="done-btn">
+                <i class="fa fa-check-square-o"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="task">
+            <div class="hedear">
+              <h4>Task</h4>
+              <i class="fa fa-close"></i>
+            </div>
+            <div class="content">
+              <div class="date">
+                <div>
+                  <h5>Start:</h5>
+                  <p>12/20/2022</p>
+                </div>
+                <div>
+                  <h5>End:</h5>
+                  <p>15/20/2022</p>
+                </div>
+              </div>
+              <div class="description">
+                <h5>Description:</h5>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+              </div>
+            </div>
+            <div class="footer">
+              <button class="tasks-btn"><i class="fa fa-list-ul"></i></button>
+              <button class="doing-btn"><i class="fa fa-spinner"></i></button>
+              <button class="done-btn">
+                <i class="fa fa-check-square-o"></i>
+              </button>
+            </div>
+          </div>
+      </div>
+      <div class="board doing-board">
+        <h3>Doing</h3>
+      </div>
+      <div class="board done-board">
+        <h3>Completed</h3>
+      </div>
+    </div>
+
     <script src="assets/js/script.js"></script>
-</body>
+  </body>
 </html>
