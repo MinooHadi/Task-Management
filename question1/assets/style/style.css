@@ -6,7 +6,7 @@
 
 
 /* navbar */
-nav{
+/* nav{
     margin-top: 30px;
     width: fit-content;
     margin-left: calc((100% - 938px)/2);
@@ -32,13 +32,54 @@ nav input:last-child{
     background-color: green;
     border: none;
     color: white;
+} */
+
+/* form */
+form{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.form{
+    display: flex;
+    gap: 20px;
+}
+
+.top input[type="text"], .bottom input[type="text"]{
+    width: 400px;
+}
+
+.top input[type="date"], .bottom input[type="date"]{
+    width: 200px;
+}
+
+.div{
+    display: flex;
+    flex-direction: column;
+}
+
+.div input{
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 5px 5px;
+}
+
+input[type="submit"]{
+    width: 80px;
+    background-color: green;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 0;
 }
 
 /* boards */
 .main{
     display: flex;
     width: fit-content;
-    margin-top: 100px;
+    margin-top: 50px;
     margin-left: calc((100% - 940px)/2);
     gap: 15px;
     padding: 0 5px;
