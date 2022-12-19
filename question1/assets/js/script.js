@@ -11,6 +11,9 @@ function loadFromLocalstorage(key) {
 
 // update localstorage
 function updateLocalstorage(key, value) {
+  if (!value) {
+    return;
+  }
   let prevValue = loadFromLocalstorage(key);
   prevValue.push(value);
   let updateValue = JSON.stringify(prevValue);
@@ -60,7 +63,7 @@ function createTodoBoard() {
     todoCard.innerHTML = `
     <div class="hedear">
             <h4>${todo.title}</h4>
-            <i class="fa fa-close"></i>
+            <i class="fa fa-close" data-id="${todo.id}" onclick="deleteTodo(this)"></i>
           </div>
           <div class="content">
             <div class="date">
@@ -106,7 +109,7 @@ function createDoingBoard() {
     doingCard.innerHTML = `
       <div class="hedear">
               <h4>${doing.title}</h4>
-              <i class="fa fa-close"></i>
+              <i class="fa fa-close" data-id="${doing.id}" onclick="deleteTodo(this)"></i>
             </div>
             <div class="content">
               <div class="date">
@@ -149,7 +152,7 @@ function createDoneBoard() {
     doneCard.innerHTML = `
       <div class="hedear">
               <h4>${done.title}</h4>
-              <i class="fa fa-close"></i>
+              <i class="fa fa-close" data-id="${done.id}" onclick="deleteTodo(this)"></i>
             </div>
             <div class="content">
               <div class="date">
@@ -185,7 +188,6 @@ function refresh() {
   createDoingBoard();
   createDoneBoard();
 }
-window.addEventListener("DOMContentLoaded", refresh);
 
 function todo(elem) {
   let board = elem.parentElement.parentElement.className;
@@ -228,3 +230,12 @@ function done(elem) {
     refresh();
   }
 }
+
+function deleteTodo(elem) {
+  let board = elem.parentElement.parentElement.className;
+  let dataId = elem.getAttribute("data-id");
+  removeById(board, dataId);
+  refresh();
+}
+
+window.addEventListener("DOMContentLoaded", refresh);
