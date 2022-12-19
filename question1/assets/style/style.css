@@ -4,36 +4,6 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
-/* navbar */
-/* nav{
-    margin-top: 30px;
-    width: fit-content;
-    margin-left: calc((100% - 938px)/2);
-    display: flex;
-    gap: 15px;
-}
-nav input{
-    padding: 10px 5px;
-    border-radius: 5px;
-    border: 1px solid grey;
-}
-
-nav input:first-child{
-    width: 500px;
-}
-
-nav input:nth-child(2){
-    width: 300px;
-}
-
-nav input:last-child{
-    width: 80px;
-    background-color: green;
-    border: none;
-    color: white;
-} */
-
 /* form */
 form{
     margin-top: 20px;
@@ -42,6 +12,7 @@ form{
     align-items: center;
     gap: 20px;
 }
+
 .form{
     display: flex;
     gap: 20px;
@@ -87,7 +58,7 @@ input[type="submit"]{
 
 .board{
     width: 300px;
-    max-height: 500px;
+    height: 500px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -104,7 +75,7 @@ input[type="submit"]{
     padding: 10px 0;
 }
 
-.task-board{
+.todo-board{
     background-color: rgb(174, 174, 236);
 }
 
@@ -117,11 +88,12 @@ input[type="submit"]{
 }
 
 /* task */
-.task{
+.todos, .doings, .dones{
     width: 250px;
     background-color: white;
     padding: 10px;
     border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 .content{
