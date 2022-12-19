@@ -47,190 +47,76 @@ function saveTodos() {
 
   updateLocalstorage("todos", newTodoCard);
 
-  createTodoBoard();
+  fillTasksBoard("todos");
   form.reset();
 }
 
-function createTodoBoard() {
-  let todosList = loadFromLocalstorage("todos");
-  const wrapper = document.querySelector(".wrapper-todo");
-  const todoBoard = document.querySelector(".todo-board");
+// fill boards
+function fillTasksBoard(key) {
+  let tasksList = loadFromLocalstorage(key);
+  const wrapper = document.querySelector(`.wrapper-${key}`);
+  const taskBoard = document.querySelector(`.${key}-board`);
   wrapper.innerHTML = "";
 
-  for (let todo of todosList) {
-    let todoCard = document.createElement("div");
-    todoCard.classList.add("todos");
-    todoCard.innerHTML = `
-    <div class="hedear">
-            <h4>${todo.title}</h4>
-            <i class="fa fa-close" data-id="${todo.id}" onclick="deleteTodo(this)"></i>
-          </div>
-          <div class="content">
-            <div class="date">
-              <div>
-                <h5>Start:</h5>
-                <p>${todo.start}</p>
-              </div>
-              <div>
-                <h5>End:</h5>
-                <p>${todo.end}</p>
-              </div>
-            </div>
-            <div class="description">
-              <h5>Description:</h5>
-              <p>${todo.description}</p>
-            </div>
-          </div>
-          <div class="footer">
-            <button class="todo-btn" data-id="${todo.id}" onclick="todo(this)"><i class="fa fa-list-ul"></i></button>
-            <button class="doing-btn" data-id="${todo.id}" onclick="doing(this)"><i class="fa fa-spinner"></i></button>
-            <button class="done-btn" data-id="${todo.id}" onclick="done(this)">
-              <i class="fa fa-check-square-o"></i>
-            </button>
-          </div>
-    `;
-    wrapper.append(todoCard);
-  }
-  todoBoard.append(wrapper);
-}
-
-function createDoingBoard() {
-  let doingsList = loadFromLocalstorage("doings");
-  const wrapper = document.querySelector(".wrapper-doing");
-  const doingBoard = document.querySelector(".doing-board");
-  wrapper.innerHTML = "";
-
-  for (let doing of doingsList) {
-    if (!doing) {
-      continue;
-    }
-    let doingCard = document.createElement("div");
-    doingCard.classList.add("doings");
-    doingCard.innerHTML = `
+  for (let task of tasksList) {
+    let taskCard = document.createElement("div");
+    taskCard.classList.add(key);
+    taskCard.innerHTML = `
       <div class="hedear">
-              <h4>${doing.title}</h4>
-              <i class="fa fa-close" data-id="${doing.id}" onclick="deleteTodo(this)"></i>
+              <h4>${task.title}</h4>
+              <i class="fa fa-close" data-id="${task.id}" onclick="deleteTodo(this)"></i>
             </div>
             <div class="content">
               <div class="date">
                 <div>
                   <h5>Start:</h5>
-                  <p>${doing.start}</p>
+                  <p>${task.start}</p>
                 </div>
                 <div>
                   <h5>End:</h5>
-                  <p>${doing.end}</p>
+                  <p>${task.end}</p>
                 </div>
               </div>
               <div class="description">
                 <h5>Description:</h5>
-                <p>${doing.description}</p>
+                <p>${task.description}</p>
               </div>
             </div>
             <div class="footer">
-              <button class="todo-btn" data-id="${doing.id}" onclick="todo(this)"><i class="fa fa-list-ul"></i></button>
-              <button class="doing-btn" data-id="${doing.id}" onclick="doing(this)"><i class="fa fa-spinner"></i></button>
-              <button class="done-btn" data-id="${doing.id}" onclick="done(this)">
+              <button class="todo-btn" data-id="${task.id}" onclick="clickHandler(this, 'todos')"><i class="fa fa-list-ul"></i></button>
+              <button class="doing-btn" data-id="${task.id}" onclick="clickHandler(this, 'doings')"><i class="fa fa-spinner"></i></button>
+              <button class="done-btn" data-id="${task.id}" onclick="clickHandler(this, 'dones')">
                 <i class="fa fa-check-square-o"></i>
               </button>
             </div>
       `;
-    wrapper.append(doingCard);
+    wrapper.append(taskCard);
   }
-  doingBoard.append(wrapper);
-}
-
-function createDoneBoard() {
-  let donesList = loadFromLocalstorage("dones");
-  const wrapper = document.querySelector(".wrapper-done");
-  const doneBoard = document.querySelector(".done-board");
-  wrapper.innerHTML = "";
-
-  for (let done of donesList) {
-    let doneCard = document.createElement("div");
-    doneCard.classList.add("dones");
-    doneCard.innerHTML = `
-      <div class="hedear">
-              <h4>${done.title}</h4>
-              <i class="fa fa-close" data-id="${done.id}" onclick="deleteTodo(this)"></i>
-            </div>
-            <div class="content">
-              <div class="date">
-                <div>
-                  <h5>Start:</h5>
-                  <p>${done.start}</p>
-                </div>
-                <div>
-                  <h5>End:</h5>
-                  <p>${done.end}</p>
-                </div>
-              </div>
-              <div class="description">
-                <h5>Description:</h5>
-                <p>${done.description}</p>
-              </div>
-            </div>
-            <div class="footer">
-              <button class="todo-btn" data-id="${done.id}" onclick="todo(this)"><i class="fa fa-list-ul"></i></button>
-              <button class="doing-btn" data-id="${done.id}" onclick="doing(this)"><i class="fa fa-spinner"></i></button>
-              <button class="done-btn" data-id="${done.id}" onclick="done(this)">
-                <i class="fa fa-check-square-o"></i>
-              </button>
-            </div>
-      `;
-    wrapper.append(doneCard);
-  }
-  doneBoard.append(wrapper);
+  taskBoard.append(wrapper);
 }
 
 function refresh() {
-  createTodoBoard();
-  createDoingBoard();
-  createDoneBoard();
+  fillTasksBoard("todos");
+  fillTasksBoard("doings");
+  fillTasksBoard("dones");
 }
 
-function todo(elem) {
+// change tasks state
+function clickHandler(elem, key) {
   let board = elem.parentElement.parentElement.className;
   let dataId = elem.getAttribute("data-id");
   let tasks = loadFromLocalstorage(board);
-  if (tasks && board != "todos") {
+  if (tasks && board != key) {
     let selectedTodoIndex = tasks.findIndex((item) => item.id == dataId);
     let newDoingCard = tasks[selectedTodoIndex];
-    updateLocalstorage("todos", newDoingCard);
+    updateLocalstorage(key, newDoingCard);
     removeById(board, dataId);
 
     refresh();
   }
 }
 
-function doing(elem) {
-  let board = elem.parentElement.parentElement.className;
-  let dataId = elem.getAttribute("data-id");
-  let tasks = loadFromLocalstorage(board);
-  if (tasks && board != "doings") {
-    let selectedTodoIndex = tasks.findIndex((item) => item.id == dataId);
-    let newDoingCard = tasks[selectedTodoIndex];
-    updateLocalstorage("doings", newDoingCard);
-    removeById(board, dataId);
-
-    refresh();
-  }
-}
-
-function done(elem) {
-  let board = elem.parentElement.parentElement.className;
-  let dataId = elem.getAttribute("data-id");
-  let tasks = loadFromLocalstorage(board);
-  if (tasks && board != "dones") {
-    let selectedTodoIndex = tasks.findIndex((item) => item.id == dataId);
-    let newDoneCard = tasks[selectedTodoIndex];
-    updateLocalstorage("dones", newDoneCard);
-    removeById(board, dataId);
-
-    refresh();
-  }
-}
-
+// delet task from boards
 function deleteTodo(elem) {
   let board = elem.parentElement.parentElement.className;
   let dataId = elem.getAttribute("data-id");

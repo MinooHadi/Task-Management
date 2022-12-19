@@ -75,15 +75,15 @@ input[type="submit"]{
     padding: 10px 0;
 }
 
-.todo-board{
+.todos-board{
     background-color: rgb(174, 174, 236);
 }
 
-.doing-board{
+.doings-board{
     background-color: rgb(238, 230, 115);
 }
 
-.done-board{
+.dones-board{
     background-color: rgb(104, 227, 104);
 }
 

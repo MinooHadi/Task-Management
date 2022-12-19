@@ -12,92 +12,52 @@
     />
   </head>
   <body>
-    <!-- navbar -->
-    <!-- <nav>
-      <input type="text" placeholder="Todo title" />
-      <input type="date" />
-      <input type="submit" value="Sub" />
-    </nav> -->
-
     <!-- form -->
     <form action="" onsubmit="saveTodos()">
       <div class="top form">
         <div class="todo-title div">
           <label for="">Title:</label>
-          <input type="text" placeholder="Todo title" id="title" required/>
+          <input type="text" placeholder="Todo title" id="title" required />
         </div>
         <div class="start-date div">
           <label for="">Start date:</label>
-          <input type="date" id="start" required/>
+          <input type="date" id="start" required />
         </div>
       </div>
       <div class="bottom form">
         <div class="todo-description div">
           <label for="">Description:</label>
-          <input type="text" placeholder="Todo description" id="description" required/>
+          <input
+            type="text"
+            placeholder="Todo description"
+            id="description"
+            required
+          />
         </div>
 
         <div class="end-date div">
           <label for="">End date:</label>
-          <input type="date" id="end" required/>
+          <input type="date" id="end" required />
         </div>
       </div>
       <div class="submit form">
-        <input type="submit" value="Sub"/>
+        <input type="submit" value="Sub" />
       </div>
     </form>
 
     <!-- boards -->
     <div class="main">
-      <div class="board todo-board">
+      <div class="board todos-board">
         <h3>Todo Tasks</h3>
-        <div class="wrapper-todo">
-
-        </div>
-        <!-- task -->
-        <!-- <div class="task">
-          <div class="hedear">
-            <h4>Task</h4>
-            <i class="fa fa-close"></i>
-          </div>
-          <div class="content">
-            <div class="date">
-              <div>
-                <h5>Start:</h5>
-                <p>12/20/2022</p>
-              </div>
-              <div>
-                <h5>End:</h5>
-                <p>15/20/2022</p>
-              </div>
-            </div>
-            <div class="description">
-              <h5>Description:</h5>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-          </div>
-          <div class="footer">
-            <button class="tasks-btn"><i class="fa fa-list-ul"></i></button>
-            <button class="doing-btn"><i class="fa fa-spinner"></i></button>
-            <button class="done-btn">
-              <i class="fa fa-check-square-o"></i>
-            </button>
-          </div>
-        </div> -->
-        
-        
+        <div class="wrapper-todos"></div>
       </div>
-      <div class="board doing-board">
+      <div class="board doings-board">
         <h3>Doing Tasks</h3>
-        <div class="wrapper-doing">
-
-        </div>
+        <div class="wrapper-doings"></div>
       </div>
-      <div class="board done-board">
+      <div class="board dones-board">
         <h3>Done Tasks</h3>
-        <div class="wrapper-done">
-
-        </div>
+        <div class="wrapper-dones"></div>
       </div>
     </div>
 
