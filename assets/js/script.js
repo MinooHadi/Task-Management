@@ -1,26 +1,25 @@
 function replaceAll(from, to) {
-  const fromUl = document.querySelector(`.side-${from}`);
-  const fromLis = fromUl.querySelectorAll("li")
+  const fromLis = document.querySelectorAll(`.side-${from} li`);
   const toUl = document.querySelector(`.side-${to}`);
   for(let fromLi of fromLis){
     toUl.append(fromLi);
   }
 
-  const leftAll = document.querySelector(".left-to-all");
-  const rightAll = document.querySelector(".right-to-all");
-  const leftChecked = document.querySelector(".left-to-checked");
-  const rightChecked = document.querySelector(".right-to-checked");
+  const fromAll = document.querySelector(`.${to}-to-all`);
+  const fromChecked = document.querySelector(`.${to}-to-checked`);
+  const toAll = document.querySelector(`.${from}-to-all`);
+  const toChecked = document.querySelector(`.${from}-to-checked`);
 
-  if (from === "left") {
-    leftAll.disabled = false;
-    rightAll.disabled = true;
-    leftChecked.disabled = false;
-    rightChecked.disabled = true;
+  if (fromLis.length === 0) {
+    fromAll.disabled = false;
+    fromChecked.disabled = false;
+    toAll.disabled = true;
+    toChecked.disabled = true;
   } else {
-    rightAll.disabled = false;
-    leftAll.disabled = true;
-    leftChecked.disabled = true;
-    rightChecked.disabled = false;
+    toAll.disabled = false;
+    toChecked.disabled = false;
+    fromAll.disabled = true;
+    fromChecked.disabled = true;
   }
 }
 
