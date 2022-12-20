@@ -12,14 +12,14 @@
     <main>
       <ul class="side side-left">
         <li><input type="checkbox" /> PHP</li>
-        <li><input type="checkbox" /> Rython</li>
+        <li><input type="checkbox" /> Python</li>
         <li><input type="checkbox" /> Ruby</li>
         <li><input type="checkbox" /> C++</li>
       </ul>
       <div class="btn">
         <button class="right-to-all" onclick="replaceAll('left', 'right')"><i class="fa fa-angle-double-right"></i></button>
-        <button class="right-to-checked"><i class="fa fa-angle-right"></i></button>
-        <button class="left-to-checked"><i class="fa fa-angle-left"></i></button>
+        <button class="right-to-checked" onclick="replaceChecked('left', 'right')"><i class="fa fa-angle-right"></i></button>
+        <button class="left-to-checked" onclick="replaceChecked('right', 'left')"><i class="fa fa-angle-left"></i></button>
         <button class="left-to-all" onclick="replaceAll('right', 'left')"><i class="fa fa-angle-double-left"></i></button>
       </div>
       <ul class="side side-right">
